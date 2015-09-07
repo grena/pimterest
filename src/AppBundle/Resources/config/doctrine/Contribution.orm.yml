@@ -1,0 +1,40 @@
+AppBundle\Entity\Contribution:
+    type: entity
+    table: contribution
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        source:
+            type: string
+            length: 255
+        appId:
+            type: string
+            length: 255
+            column: app_id
+        username:
+            type: string
+            length: 255
+        userType:
+            type: string
+            length: 255
+            column: user_type
+        mediaUrl:
+            type: string
+            length: '65536'
+            column: media_url
+        active:
+            type: boolean
+        content:
+            type: string
+            length: '1024'
+        latitude:
+            type: string
+            length: 255
+        longitude:
+            type: string
+            length: 255
+    lifecycleCallbacks: {  }

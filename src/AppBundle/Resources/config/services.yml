@@ -10,3 +10,5 @@ services:
             - %instagram.api_key%
             - %instagram.api_secret%
             - %instagram.api_callback%
+    pimterest.repository.contribution:
+        class: AppBundle\Repository\ContributionRepository
