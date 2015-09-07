@@ -1,0 +1,5 @@
+services:
+    pimterest.api.reader.twitter:
+        class: AppBundle\Twitter\TwitterReader
+        arguments:
+            - %twitter.tag%
