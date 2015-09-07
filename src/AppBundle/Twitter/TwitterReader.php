@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Service;
+namespace AppBundle\Twitter;
 
 use TwitterAPIExchange;
 
@@ -8,8 +8,12 @@ class TwitterReader
 {
     protected $settings;
 
-    public function __construct()
+    protected $tag;
+
+    public function __construct($tag)
     {
+        $this->tag = trim($tag);
+
         $this->settings = [
             'oauth_access_token'        => "976729392-fuYxsR0xLVmkDqKRVRMdDpGFU6ilF8biKoOEvolK",
             'oauth_access_token_secret' => "bPPWslRIUGqkBEki9mtQYzMFAUW5GSzEPG5HeQyDALPxO",
@@ -21,11 +25,11 @@ class TwitterReader
     public function retrieve()
     {
         $url           = 'https://api.twitter.com/1.1/search/tweets.json';
-        $getfield      = '?q=%23akeneoAroundTheWorld&src=typd&lang=fr';
+        $getfield      = sprintf('?q=#%s', $this->tag);
         $requestMethod = 'GET';
 
         $twitter = new TwitterAPIExchange($this->settings);
-        echo $twitter->setGetfield($getfield)
+        return $twitter->setGetfield($getfield)
             ->buildOauth($url, $requestMethod)
             ->performRequest();
     }
