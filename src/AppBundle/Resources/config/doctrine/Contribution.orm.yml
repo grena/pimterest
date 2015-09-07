@@ -34,7 +34,9 @@ AppBundle\Entity\Contribution:
         latitude:
             type: string
             length: 255
+            nullable: true
         longitude:
             type: string
             length: 255
+            nullable: true
     lifecycleCallbacks: {  }

@@ -2,6 +2,7 @@
 
 namespace AppBundle\Repository;
 
+use AppBundle\Entity\Contribution;
 use Doctrine\ORM\EntityRepository;
 
 /**
@@ -11,4 +12,12 @@ use Doctrine\ORM\EntityRepository;
  */
 class ContributionRepository extends EntityRepository
 {
+    /**
+     * @param Contribution $contribution
+     */
+    public function save(Contribution $contribution)
+    {
+        $this->getEntityManager()->persist($contribution);
+        $this->getEntityManager()->flush($contribution);
+    }
 }

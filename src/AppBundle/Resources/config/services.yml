@@ -12,3 +12,6 @@ services:
             - %instagram.api_callback%
     pimterest.repository.contribution:
         class: AppBundle\Repository\ContributionRepository
+        factory_service: doctrine.orm.entity_manager
+        factory_method: getRepository
+        arguments: ['AppBundle\Entity\Contribution']

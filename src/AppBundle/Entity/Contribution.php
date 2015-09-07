@@ -40,6 +40,22 @@ class Contribution
     protected $longitude;
 
     /**
+     * @param array $data
+     */
+    public function __construct(array $data)
+    {
+        $this->source    = $data['source'];
+        $this->appId     = $data['app_id'];
+        $this->username  = $data['username'];
+        $this->userType  = $data['usertype'];
+        $this->mediaUrl  = $data['mediaurl'];
+        $this->active    = $data['active'];
+        $this->content   = $data['content'];
+        $this->latitude  = $data['latitude'];
+        $this->longitude = $data['longitude'];
+    }
+
+    /**
      * Get id
      *
      * @return integer 
