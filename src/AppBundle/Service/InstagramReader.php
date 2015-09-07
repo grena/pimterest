@@ -15,28 +15,29 @@ class InstagramReader implements ContainerAwareInterface
 {
     use ContainerAwareTrait;
 
+    protected $tag;
     protected $settings;
 
-    public function __construct()
+    public function __construct($tag, $apiKey, $apiSecret, $apiCallback)
     {
+        $this->tag = trim($tag);
+
         $this->settings = [
-            'apiKey'      => '192da7558c59416fb12a7311718c01cc',
-            'apiSecret'   => 'c1bf10a55f6144429b703b9b9adff505',
-            'apiCallback' => 'http://pimterest.local/'
+            'apiKey'      => $apiKey,
+            'apiSecret'   => $apiSecret,
+            'apiCallback' => $apiCallback
         ];
     }
 
-    public function retrieveByTag($tag)
+    public function retrieve()
     {
         $formatted = [];
 
-        $response = $this->getInstagram()->getTagMedia($tag);
+        $response = $this->getInstagram()->getTagMedia($this->tag);
         $data = $response->data;
 
-        if (!empty($data)) {
-            foreach ($data as $postData) {
-                $formatted[] = $this->extractPost($postData);
-            }
+        foreach ($data as $postData) {
+            $formatted[] = $this->extractPost($postData);
         }
 
         return $formatted;
@@ -45,12 +46,14 @@ class InstagramReader implements ContainerAwareInterface
     protected function extractPost($data)
     {
         return [
-            'id' => $data->id,
-            'username' => $data->user->username,
-            'usertype' => 'community',
-            'mediaurl' => $data->images->standard_resolution->url,
-            'active' => true,
-            'content' => $data->caption->text
+            'id'        => $data->id,
+            'username'  => $data->user->username,
+            'usertype'  => 'community',
+            'mediaurl'  => $data->images->standard_resolution->url,
+            'active'    => true,
+            'content'   => $data->caption->text,
+            'latitude'  => $data->location ? $data->location->latitude : '',
+            'longitude' => $data->location ? $data->location->longitude : ''
         ];
     }
 

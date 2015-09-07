@@ -2,8 +2,8 @@
 
 namespace AppBundle\Command;
 
+use AppBundle\Service\InstagramReader;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
-use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
@@ -16,27 +16,21 @@ class InstagramCommand extends ContainerAwareCommand
 {
     protected function configure()
     {
-        $this
-            ->setName('pimterest:instagram:read')
-            ->setDescription('Read instagram API')
-            ->addArgument(
-                'hashtag',
-                InputArgument::REQUIRED,
-                'Instagram hashtag to fetch'
-            )
-        ;
+        $this->setName('pimterest:instagram:read')->setDescription('Read instagram API');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        /** @var \AppBundle\Service\InstagramReader $reader */
-        $reader = $this->getContainer()->get('pimterest.reader.instagram');
-        $hashtag = $input->getArgument('hashtag');
+        $reader = $this->getInstagramReader();
 
-        if (!$hashtag) {
-            throw new Exception('Need an hashtag to fetch');
-        }
+        print_r($reader->retrieve());
+    }
 
-        print_r($reader->retrieveByTag($hashtag));
+    /**
+     * @return InstagramReader
+     */
+    protected function getInstagramReader()
+    {
+        return $this->getContainer()->get('pimterest.reader.instagram');
     }
 }
