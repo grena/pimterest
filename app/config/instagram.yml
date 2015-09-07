@@ -1,0 +1,5 @@
+parameters:
+    instagram.tag: 'food'
+    instagram.api_key: '192da7558c59416fb12a7311718c01cc'
+    instagram.api_secret: 'c1bf10a55f6144429b703b9b9adff505'
+    instagram.api_callback: 'http://pimterest.local/'
