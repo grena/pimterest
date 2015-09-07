@@ -3,3 +3,5 @@ services:
         class: AppBundle\Twitter\TwitterReader
         arguments:
             - %twitter.tag%
+    pimterest.reader.instagram:
+        class: AppBundle\Service\InstagramReader
