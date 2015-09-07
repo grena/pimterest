@@ -4,7 +4,7 @@ services:
         arguments:
             - %twitter.tag%
     pimterest.reader.instagram:
-        class: AppBundle\Service\InstagramReader
+        class: AppBundle\Instagram\InstagramReader
         arguments:
             - %instagram.tag%
             - %instagram.api_key%

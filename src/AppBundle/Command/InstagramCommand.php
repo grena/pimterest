@@ -2,7 +2,7 @@
 
 namespace AppBundle\Command;
 
-use AppBundle\Service\InstagramReader;
+use AppBundle\Instagram\InstagramReader;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;

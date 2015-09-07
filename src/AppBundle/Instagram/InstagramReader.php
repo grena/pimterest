@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Service;
+namespace AppBundle\Instagram;
 
 use MetzWeb\Instagram\Instagram;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
