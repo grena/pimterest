@@ -16,7 +16,7 @@ function createMarker(map, contribution) {
     if (contribution.userType === 'partner') {
         image = imagePartners;
     }
-    if (contribution.userType === 'cutomer') {
+    if (contribution.userType === 'customer') {
         image = imageCustomers;
     }
 
