@@ -1,7 +1,7 @@
 $(document).ready(function (e) {
     Dropzone.autoDiscover = false;
     var myDropzone = new Dropzone("div#dropzone", {
-        url: "/app_dev.php/rest/upload",
+        url: "/rest/upload",
         maxFiles: 1
     });
 
