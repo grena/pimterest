@@ -15,8 +15,9 @@ class ContributionRepository extends EntityRepository
     /**
      * @param Contribution $contribution
      */
-    public function save(Contribution $contribution)
+    public function findAllOrderedByDate()
     {
+        $this->findBy([], ['id' => 'DESC']);
         $this->getEntityManager()->persist($contribution);
         $this->getEntityManager()->flush($contribution);
     }

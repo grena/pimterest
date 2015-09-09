@@ -64,7 +64,7 @@ class AdminController extends Controller
     {
         $repo = $this->container->get('pimterest.repository.contribution');
         $page = $request->query->getInt('page', 1);
-        $contributions = $repo->findAll();
+        $contributions = $repo->findBy([], ['id' => 'DESC']);
 
         $paginator  = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
