@@ -1,0 +1,52 @@
+<?php
+
+namespace AppBundle\Form;
+
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+
+class AddContributionType extends AbstractType
+{
+    /**
+     * @param FormBuilderInterface $builder
+     * @param array                $options
+     */
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {
+        $builder
+            ->add('mediaUrl')
+            ->add('content')
+            ->add('latitude', 'number')
+            ->add('longitude', 'number');
+
+        $builder->add('userType', 'choice', [
+            'choices'  => [
+                'partner'      => 'Partner',
+                'customer'     => 'Customer',
+                'collaborator' => 'Collaborator'
+            ],
+            'required' => true,
+        ]);
+
+        $builder->add('content', 'textarea');
+    }
+
+    /**
+     * @param OptionsResolverInterface $resolver
+     */
+    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    {
+        $resolver->setDefaults([
+            'data_class' => 'AppBundle\Entity\Contribution'
+        ]);
+    }
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return 'appbundle_add_contribution';
+    }
+}

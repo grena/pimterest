@@ -15,9 +15,11 @@ AppBundle\Entity\Contribution:
             type: string
             length: 255
             column: app_id
+            nullable: true
         username:
             type: string
             length: 255
+            nullable: true
         userType:
             type: string
             length: 255
@@ -26,6 +28,7 @@ AppBundle\Entity\Contribution:
             type: string
             length: '65536'
             column: media_url
+            nullable: true
         active:
             type: boolean
         content:

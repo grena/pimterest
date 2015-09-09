@@ -18,7 +18,7 @@ function createMarker(map, coordinates) {
 $(document).ready(function(e) {
     var map = initMap();
 
-    var locations = $.get('http://pimterest.local/app_dev.php/rest/locations').done(function(response){
+    var locations = $.get('/app_dev.php/rest/locations').done(function(response){
         response.forEach(function(coordinates){
             createMarker(map, coordinates);
         })

@@ -3,6 +3,11 @@ services:
         class: AppBundle\Twitter\TwitterReader
         arguments:
             - %twitter.tag%
+            - %twitter.oauth_access_token%
+            - %twitter.oauth_access_token_secret%
+            - %twitter.consumer_key%
+            - %twitter.consumer_secret%
+
     pimterest.reader.instagram:
         class: AppBundle\Instagram\InstagramReader
         arguments:
