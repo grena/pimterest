@@ -33,7 +33,10 @@ function initMap() {
 
 function initClusters(map) {
     return {
-        community: new MarkerClusterer(map)
+        community: new MarkerClusterer(map, [], {
+            gridSize: 30,
+            maxZoom: 8
+        })
     }
 }
 
