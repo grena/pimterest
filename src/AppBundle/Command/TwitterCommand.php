@@ -2,12 +2,13 @@
 
 namespace AppBundle\Command;
 
-use AppBundle\Service\TwitterReader;
+use AppBundle\Entity\Contribution;
+use AppBundle\Twitter\TwitterReader;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class RetrieveTweetsCommand extends ContainerAwareCommand
+class TwitterCommand extends ContainerAwareCommand
 {
     protected function configure()
     {
@@ -21,9 +22,20 @@ class RetrieveTweetsCommand extends ContainerAwareCommand
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $reader = $this->getTwitterReader();
-        $result = json_decode($reader->retrieve());
+        $result = $reader->retrieve();
 
-        dump($result->statuses);
+        foreach($result as $contributionData) {
+            $contribution = new Contribution($contributionData);
+            $search = [
+                'appId' => $contribution->getAppId(),
+                'source' => $contribution->getSource()
+            ];
+
+//            if (!$this->getContributionRepository()->findOneBy($search)) {
+//                $this->getEntityManager()->persist($contribution);
+//                $this->getEntityManager()->flush($contribution);
+//            }
+        }
 
         $output->writeln('<info>Done!</info>');
 

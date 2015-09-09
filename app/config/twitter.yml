@@ -1,2 +1,6 @@
 parameters:
     twitter.tag: 'summersession15'
+    twitter.oauth_access_token       : '976729392-fuYxsR0xLVmkDqKRVRMdDpGFU6ilF8biKoOEvolK'
+    twitter.oauth_access_token_secret: 'bPPWslRIUGqkBEki9mtQYzMFAUW5GSzEPG5HeQyDALPxO'
+    twitter.consumer_key             : 'EY8u0i6USR7JwgMmrEN5RD4V1'
+    twitter.consumer_secret          : 'N6JcipiRz6mOV6B4j3YDAU03mey0CHovBKmnqtOAzcyFjGN7fE'

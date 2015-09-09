@@ -3,10 +3,20 @@ services:
         class: AppBundle\Twitter\TwitterReader
         arguments:
             - %twitter.tag%
+            - %twitter.oauth_access_token%
+            - %twitter.oauth_access_token_secret%
+            - %twitter.consumer_key%
+            - %twitter.consumer_secret%
+
     pimterest.reader.instagram:
-        class: AppBundle\Service\InstagramReader
+        class: AppBundle\Instagram\InstagramReader
         arguments:
             - %instagram.tag%
             - %instagram.api_key%
             - %instagram.api_secret%
             - %instagram.api_callback%
+    pimterest.repository.contribution:
+        class: AppBundle\Repository\ContributionRepository
+        factory_service: doctrine.orm.entity_manager
+        factory_method: getRepository
+        arguments: ['AppBundle\Entity\Contribution']

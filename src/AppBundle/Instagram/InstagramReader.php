@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Service;
+namespace AppBundle\Instagram;
 
 use MetzWeb\Instagram\Instagram;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
@@ -46,7 +46,8 @@ class InstagramReader implements ContainerAwareInterface
     protected function extractPost($data)
     {
         return [
-            'id'        => $data->id,
+            'app_id'    => $data->id,
+            'source'    => 'instagram',
             'username'  => $data->user->username,
             'usertype'  => 'community',
             'mediaurl'  => $data->images->standard_resolution->url,

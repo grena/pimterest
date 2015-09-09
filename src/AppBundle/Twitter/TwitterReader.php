@@ -10,15 +10,20 @@ class TwitterReader
 
     protected $tag;
 
-    public function __construct($tag)
-    {
+    public function __construct(
+        $tag,
+        $oauth_access_token,
+        $oauth_access_token_secret,
+        $consumer_key,
+        $consumer_secret
+    ) {
         $this->tag = trim($tag);
 
         $this->settings = [
-            'oauth_access_token'        => "976729392-fuYxsR0xLVmkDqKRVRMdDpGFU6ilF8biKoOEvolK",
-            'oauth_access_token_secret' => "bPPWslRIUGqkBEki9mtQYzMFAUW5GSzEPG5HeQyDALPxO",
-            'consumer_key'              => "EY8u0i6USR7JwgMmrEN5RD4V1",
-            'consumer_secret'           => "N6JcipiRz6mOV6B4j3YDAU03mey0CHovBKmnqtOAzcyFjGN7fE"
+            'oauth_access_token'        => $oauth_access_token,
+            'oauth_access_token_secret' => $oauth_access_token_secret,
+            'consumer_key'              => $consumer_key,
+            'consumer_secret'           => $consumer_secret,
         ];
     }
 
@@ -29,8 +34,43 @@ class TwitterReader
         $requestMethod = 'GET';
 
         $twitter = new TwitterAPIExchange($this->settings);
-        return $twitter->setGetfield($getfield)
+
+        $response = $twitter->setGetfield($getfield)
             ->buildOauth($url, $requestMethod)
             ->performRequest();
+
+        $data = json_decode($response);
+
+        $formatted = [];
+
+        foreach ($data->statuses as $postData) {
+            $formatted[] = $this->extractPost($postData);
+        }
+
+        return $formatted;
+    }
+
+    protected function extractPost($data)
+    {
+        $formatted = [];
+        if ($data->coordinates) {
+            dump($data);
+            $formatted = [
+                'app_id'    => $data->id,
+                'source'    => 'twitter',
+                'username'  => $data->user->name,
+                'usertype'  => 'community',
+                'active'    => true,
+                'content'   => $data->text,
+                'latitude'  => $data->location ? $data->location->latitude : '',
+                'longitude' => $data->location ? $data->location->longitude : ''
+            ];
+
+            if (count((array) $data->media)) {
+                $formatted['mediaurl'] = $data->media[0]->media_url;
+            }
+        }
+
+        return $formatted;
     }
 }

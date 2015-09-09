@@ -5,3 +5,12 @@ map_index:
 locations_index:
     path: /rest/locations
     defaults: { _controller: AppBundle:Rest/Locations:list, _format: json }
+
+admin_index:
+    path: /admin
+    defaults: { _controller: AppBundle:Admin:index }
+
+upload_rest_upload:
+    path: /rest/upload
+    defaults: { _controller: AppBundle:Rest/Upload:upload, _format: json }
+
