@@ -1,41 +1,35 @@
-{% form_theme form 'AppBundle:Form:fields.html.twig' %}
 {% extends '@App/base.html.twig' %}
 
 {% block body %}
-    <h1>Admin</h1>
+    <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+            <table class="table table-hover table-condensed">
+                <thead>
+                <tr>
+                    <th style="width: 150px;">Picture</th>
+                    <th>Source</th>
+                    <th>Usertype</th>
+                    <th style="width: 150px;"></th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for contribution in pagination %}
+                    <tr>
+                        <td><img src="{{ contribution.mediaUrl }}" alt="" style="width: 100px;" class="img-thumbnail" /></td>
+                        <td><span style="font-size: 12px;" class="text-muted">{{ contribution.source|capitalize }}</span></td>
+                        <td><span style="font-size: 12px;" class="text-muted">{{ contribution.userType|capitalize }}</span></td>
+                        <td style="text-align: right;">
+                            <a class="btn btn-info btn-xs" href="{{ url('admin_edit', {'id': contribution.id}) }}">Edit</a>
+                            <a class="btn btn-danger btn-xs" href="{{ url('admin_delete', {'id': contribution.id}) }}" onclick="return confirm('Delete entry?')">Delete</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
 
-    <div class="panel panel-default col-sm-12">
-        <div class="panel-body">
-            <div class="col-sm-8">
-                {{ form_start(form) }}
-                {{ form_widget(form._token) }}
-                {{ form_errors(form) }}
-                {{ form_row(form.userType) }}
-                {{ form_row(form.mediaUrl, {class: 'form-group'}) }}
-                {{ form_row(form.content) }}
-                {{ form_row(form.latitude) }}
-                {{ form_row(form.longitude) }}
-                <input class="btn" type="submit"/>
-
-                {{ form_end(form, {'render_rest': false}) }}
-            </div>
-            <div class="col-sm-4">
-                <div id="dropzone" class="dropzone">
-                </div>
+            <div class="navigation" style="text-align: center;">
+                {{ knp_pagination_render(pagination) }}
             </div>
         </div>
     </div>
-
-
-{% endblock %}
-
-{% block inline_javascripts %}
-    {{ parent() }}
-    <script type="text/javascript" src="{{ asset('bundles/app/js/dropzone.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('bundles/app/js/uploader.js') }}"></script>
-{% endblock %}
-
-{% block stylesheets %}
-    {{ parent() }}
-    <link rel="stylesheet" href="{{ asset('bundles/app/css/dropzone.css') }}">
 {% endblock %}
