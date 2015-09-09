@@ -13,7 +13,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js"></script>
     {% block head_javascripts %}{% endblock %}
 </head>
-<body>
+<body class="{% block inline_bodyclass %}{% endblock %}">
 <nav class="navbar navbar-inverse">
     <div class="container">
         <div class="navbar-header">
