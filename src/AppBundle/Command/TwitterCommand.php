@@ -3,7 +3,9 @@
 namespace AppBundle\Command;
 
 use AppBundle\Entity\Contribution;
+use AppBundle\Repository\ContributionRepository;
 use AppBundle\Twitter\TwitterReader;
+use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -31,10 +33,10 @@ class TwitterCommand extends ContainerAwareCommand
                 'source' => $contribution->getSource()
             ];
 
-//            if (!$this->getContributionRepository()->findOneBy($search)) {
-//                $this->getEntityManager()->persist($contribution);
-//                $this->getEntityManager()->flush($contribution);
-//            }
+            if (!$this->getContributionRepository()->findOneBy($search)) {
+                $this->getEntityManager()->persist($contribution);
+                $this->getEntityManager()->flush($contribution);
+            }
         }
 
         $output->writeln('<info>Done!</info>');
@@ -48,5 +50,21 @@ class TwitterCommand extends ContainerAwareCommand
     protected function getTwitterReader()
     {
         return $this->getContainer()->get('pimterest.api.reader.twitter');
+    }
+
+    /**
+     * @return ContributionRepository
+     */
+    protected function getContributionRepository()
+    {
+        return $this->getContainer()->get('pimterest.repository.contribution');
+    }
+
+    /**
+     * @return EntityManager
+     */
+    protected function getEntityManager()
+    {
+        return $this->getContainer()->get('doctrine.orm.entity_manager');
     }
 }

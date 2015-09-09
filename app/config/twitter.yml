@@ -1,5 +1,5 @@
 parameters:
-    twitter.tag: 'summersession15'
+    twitter.tag: 'AkeneoAroundTheWorld'
     twitter.oauth_access_token       : '976729392-fuYxsR0xLVmkDqKRVRMdDpGFU6ilF8biKoOEvolK'
     twitter.oauth_access_token_secret: 'bPPWslRIUGqkBEki9mtQYzMFAUW5GSzEPG5HeQyDALPxO'
     twitter.consumer_key             : 'EY8u0i6USR7JwgMmrEN5RD4V1'

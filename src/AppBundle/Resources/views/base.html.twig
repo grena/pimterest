@@ -7,8 +7,10 @@
     <title>{% block title %}PIM-terrestre{% endblock %}</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     {% block stylesheets %}{% endblock %}
+    <link rel="stylesheet" href="{{ asset('bundles/app/css/main.css') }}">
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js"></script>
     {% block head_javascripts %}{% endblock %}
 </head>
 <body>
@@ -32,9 +34,11 @@
         </div>
     </div>
 </nav>
+{% block container %}
 <div class="container">
     {% block body %}{% endblock %}
 </div>
+{% endblock %}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 {% block inline_javascripts %}{% endblock %}
