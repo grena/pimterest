@@ -8,11 +8,23 @@ function initMap() {
 }
 
 function createMarker(map, contribution) {
-    // Create a marker and set its position.
+    var imageCommunity = '/bundles/app/img/marker-violet.png';
+    var imagePartners = '/bundles/app/img/marker-partners.png';
+    var imageCustomers = '/bundles/app/img/marker-customers.png';
+
+    var image = imageCommunity;
+    if (contribution.userType === 'partner') {
+        image = imagePartners;
+    }
+    if (contribution.userType === 'cutomer') {
+        image = imageCustomers;
+    }
+
     var marker = new google.maps.Marker({
         map: map,
         position: contribution.position,
-        title: 'Hello World!'
+        title: contribution.userType,
+        icon: image
     });
 
     var contentTemplate = _.template(info_window_template);

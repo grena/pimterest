@@ -24,6 +24,7 @@ class LocationsController extends Controller
                         'lat' => (float) $contrib->getLatitude(),
                         'lng' => (float) $contrib->getLongitude()
                     ],
+                    'userType' => $contrib->getUserType(),
                 ];
             }
         }
