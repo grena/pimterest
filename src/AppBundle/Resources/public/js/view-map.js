@@ -7,7 +7,13 @@ function initMap() {
     });
 }
 
-function createMarker(map, contribution) {
+function initClusters(map) {
+    return {
+        community: new MarkerClusterer(map)
+    }
+}
+
+function createMarker(map, clusters, contribution) {
     var imageCommunity = '/bundles/app/img/marker-violet.png';
     var imagePartners = '/bundles/app/img/marker-partners.png';
     var imageCustomers = '/bundles/app/img/marker-customers.png';
@@ -37,17 +43,19 @@ function createMarker(map, contribution) {
         content: contentString
     });
 
-    marker.addListener('click', function() {
+    marker.addListener('click', function () {
         infowindow.open(map, marker);
     });
+    clusters.community.addMarker(marker);
 }
 
-$(document).ready(function(e) {
+$(document).ready(function (e) {
     var map = initMap();
+    var clusters = initClusters(map);
 
-    var locations = $.get('/rest/locations').done(function(response){
-        response.forEach(function(coordinates){
-            createMarker(map, coordinates);
+    var locations = $.get('/rest/locations').done(function (response) {
+        response.forEach(function (coordinates) {
+            createMarker(map, clusters, coordinates);
         })
     });
 });
