@@ -1,0 +1,41 @@
+{% form_theme form 'AppBundle:Form:fields.html.twig' %}
+{% extends '@App/base.html.twig' %}
+
+{% block body %}
+    <h1>Admin</h1>
+
+    <div class="panel panel-default col-sm-12">
+        <div class="panel-body">
+            <div class="col-sm-8">
+                {{ form_start(form) }}
+                {{ form_widget(form._token) }}
+                {{ form_errors(form) }}
+                {{ form_row(form.userType) }}
+                {{ form_row(form.mediaUrl, {class: 'form-group'}) }}
+                {{ form_row(form.content) }}
+                {{ form_row(form.latitude) }}
+                {{ form_row(form.longitude) }}
+                <input class="btn" type="submit"/>
+
+                {{ form_end(form, {'render_rest': false}) }}
+            </div>
+            <div class="col-sm-4">
+                <div id="dropzone" class="dropzone">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+
+{% block inline_javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('bundles/app/js/dropzone.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/app/js/uploader.js') }}"></script>
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/app/css/dropzone.css') }}">
+{% endblock %}

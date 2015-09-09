@@ -17,8 +17,8 @@ class AddContributionType extends AbstractType
         $builder
             ->add('mediaUrl')
             ->add('content')
-            ->add('latitude', 'number')
-            ->add('longitude', 'number');
+            ->add('latitude', 'number', ['scale' => 10])
+            ->add('longitude', 'number', ['scale' => 10]);
 
         $builder->add('userType', 'choice', [
             'choices'  => [

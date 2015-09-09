@@ -35,11 +35,9 @@ AppBundle\Entity\Contribution:
             type: string
             length: '1024'
         latitude:
-            type: string
-            length: 255
+            type: float
             nullable: true
         longitude:
-            type: string
-            length: 255
+            type: float
             nullable: true
     lifecycleCallbacks: {  }
