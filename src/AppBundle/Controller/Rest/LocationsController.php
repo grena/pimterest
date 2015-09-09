@@ -18,8 +18,12 @@ class LocationsController extends Controller
         foreach($contributations as $contrib) {
             if ($contrib->getLatitude()) {
                 $locations[] = [
-                    'lat' => (float) $contrib->getLatitude(),
-                    'lng' => (float) $contrib->getLongitude()
+                    'content' => trim($contrib->getContent()),
+                    'media' => $contrib->getMediaUrl(),
+                    'position' => [
+                        'lat' => (float) $contrib->getLatitude(),
+                        'lng' => (float) $contrib->getLongitude()
+                    ],
                 ];
             }
         }

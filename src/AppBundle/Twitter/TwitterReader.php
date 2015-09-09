@@ -52,25 +52,34 @@ class TwitterReader
 
     protected function extractPost($data)
     {
-        $formatted = [];
-        if ($data->coordinates) {
-            dump($data);
-            $formatted = [
-                'app_id'    => $data->id,
-                'source'    => 'twitter',
-                'username'  => $data->user->name,
-                'usertype'  => 'community',
-                'active'    => true,
-                'content'   => $data->text,
-                'latitude'  => $data->location ? $data->location->latitude : '',
-                'longitude' => $data->location ? $data->location->longitude : ''
-            ];
+        $formatted = [
+            'app_id'    => $data->id,
+            'source'    => 'twitter',
+            'username'  => $data->user->name,
+            'usertype'  => 'community',
+            'active'    => true,
+            'content'   => $data->text,
+            'mediaurl' => null,
+        ];
 
-            if (count((array) $data->media)) {
-                $formatted['mediaurl'] = $data->media[0]->media_url;
-            }
+        if (isset($data->entities->media) && count((array) $data->entities->media)) {
+            $media = $data->entities->media;
+            $formatted['mediaurl'] = $media[0]->media_url;
         }
 
-        return $formatted;
+        if ($data->coordinates) {
+            $formatted['latitude']  = $data->location ? $data->location->latitude : '';
+            $formatted['longitude'] = $data->location ? $data->location->longitude : '';
+        } elseif (isset($data->place->bounding_box->coordinates)) {
+            $coordinates = $data->place->bounding_box->coordinates;
+            $formatted['latitude']  = $coordinates[0][0][1];
+            $formatted['longitude'] = $coordinates[0][0][0];
+        }
+
+        if ($formatted['latitude']) {
+            return $formatted;
+        } else {
+            return [];
+        }
     }
 }
