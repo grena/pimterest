@@ -70,6 +70,7 @@ function createMarker(map, clusters, infowindow, contribution) {
         content: Autolinker.link(contribution.content),
         mediaUrl: contribution.media,
         title: title,
+        userType: contribution.userType,
         iwClass: contribution.userType
     });
 
