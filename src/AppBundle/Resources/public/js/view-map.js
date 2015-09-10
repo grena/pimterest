@@ -74,6 +74,7 @@ function createMarker(map, clusters, infowindow, contribution) {
     });
 
     marker.addListener('click', function () {
+        //map.setCenter(marker.getPosition());
         infowindow.setContent(contentString);
         infowindow.open(map, marker);
     });
@@ -96,7 +97,7 @@ $(document).ready(function (e) {
         , boxClass: "myInfobox"
         , closeBoxMargin: "0"
         , closeBoxURL: ""
-        , infoBoxClearance: new google.maps.Size(1, 1)
+        , infoBoxClearance: new google.maps.Size(20, 20)
         , visible: true
         , pane: "floatPane"
         , enableEventPropagation: false

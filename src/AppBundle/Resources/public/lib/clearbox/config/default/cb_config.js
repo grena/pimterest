@@ -30,15 +30,15 @@ var
 	CB_SlideShowBarPadd=17,				// padding of the slideshow bar (left and right)
 	CB_SlideShowBarTop=2,				// position of the slideshow bar from the top of the picture
 
-	CB_SimpleDesign='off',				// if it's 'on', CB doesn't show the frame but only the content - really nice ;)
+	CB_SimpleDesign='on',				// if it's 'on', CB doesn't show the frame but only the content - really nice ;)
 
 	CB_CloseBtnTop=-10,				// vertical position of the close button in picture mode
 	CB_CloseBtnRight=-14,				// horizontal position of the close button in picture mode
 	CB_CloseBtn2Top=-20,				// vertical position of the close button in content mode
 	CB_CloseBtn2Right=-30,				// horizontal position of the close button in content mode
 
-	CB_OSD='on',					// turns on OSD
-	CB_OSDShowReady='on',				// when clearbox is loaded and ready, it shows an OSD message
+	CB_OSD='off',					// turns on OSD
+	CB_OSDShowReady='off',				// when clearbox is loaded and ready, it shows an OSD message
 
 // CB font, text and navigation (at the bottom of CB window) settings:
 
