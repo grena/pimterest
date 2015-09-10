@@ -42,7 +42,7 @@ class TwitterReader
         $data = json_decode($response);
 
         $formatted = [];
-
+dump($data->statuses);
         foreach ($data->statuses as $postData) {
             $formatted[] = $this->extractPost($postData);
         }
@@ -55,7 +55,7 @@ class TwitterReader
         $formatted = [
             'app_id'    => $data->id,
             'source'    => 'twitter',
-            'username'  => $data->user->name,
+            'username'  => $data->user->screen_name,
             'usertype'  => 'community',
             'active'    => true,
             'content'   => $data->text,

@@ -86,6 +86,28 @@ $(document).ready(function (e) {
     var infowindow = new google.maps.InfoWindow({
         content: ''
     });
+    var var_infobox_props = {
+        content: ""
+        , disableAutoPan: false
+        , maxWidth: 0
+        , pixelOffset: new google.maps.Size(-10, 0)
+        , zIndex: null
+        , boxClass: "myInfobox"
+        , closeBoxMargin: "2px"
+        , closeBoxURL: ""
+        , infoBoxClearance: new google.maps.Size(1, 1)
+        , visible: true
+        , pane: "floatPane"
+        , enableEventPropagation: false
+    };
+
+    infowindow = new InfoBox(var_infobox_props);
+
+    google.maps.event.addListener(map, 'click', function () {
+        if (infowindow) {
+            infowindow.close();
+        }
+    });
 
     var locations = $.get('/rest/locations').done(function (response) {
         response.forEach(function (coordinates) {
