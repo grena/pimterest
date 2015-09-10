@@ -71,14 +71,19 @@ a.btn-home {
 }
 .iw-img img {
     margin: 0 auto;
-    width: 100%;
     max-height: 400px;
+    width: 100%;
+    height: auto;
 }
 
 .iw-content {
+    padding: 2px 4px;
+    text-align: justify;
+}
+
+.community .iw-content {
     background-color: #0088CC;
     color: white;
-    padding: 2px 4px;
 }
 
 .iw-content a {

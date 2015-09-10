@@ -34,9 +34,9 @@ class ContributionType extends AbstractType
 
         $builder->add('userType', 'choice', [
             'choices'  => [
-                'partner'      => 'Partner',
-                'customer'     => 'Customer',
-                'collaborator' => 'Collaborator'
+                'partner'   => 'Partner',
+                'customer'  => 'Customer',
+                'community' => 'Collaborator'
             ],
             'required' => true,
         ]);

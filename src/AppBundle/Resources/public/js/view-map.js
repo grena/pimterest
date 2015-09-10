@@ -68,7 +68,8 @@ function createMarker(map, clusters, infowindow, contribution) {
     var contentString = contentTemplate({
         content: Autolinker.link(contribution.content),
         mediaUrl: contribution.media,
-        title: title
+        title: title,
+        iwClass: contribution.userType
     });
 
     marker.addListener('click', function () {
