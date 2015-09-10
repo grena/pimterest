@@ -59,18 +59,21 @@ a.btn-home {
     display: block;
 }
 
-.gm-style img,
-.img-infowindow {
-    width: 100%;
-}
-
 .iw-panel {
     position: relative;
 }
+
 .iw-img img {
     margin: 0 auto;
+    min-width: 100px;
+    max-width: 200px;
+}
+
+.community .iw-img img {
     width: 100%;
+    max-width: none;
     height: auto;
+    max-height: none;
 }
 
 .iw-content {

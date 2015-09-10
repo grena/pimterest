@@ -93,7 +93,7 @@ $(document).ready(function (e) {
         , pixelOffset: new google.maps.Size(-10, 0)
         , zIndex: null
         , boxClass: "myInfobox"
-        , closeBoxMargin: "2px"
+        , closeBoxMargin: "0"
         , closeBoxURL: ""
         , infoBoxClearance: new google.maps.Size(1, 1)
         , visible: true
