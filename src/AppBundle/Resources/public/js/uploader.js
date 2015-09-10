@@ -5,12 +5,16 @@ $(document).ready(function (e) {
         maxFiles: 1
     });
 
-    myDropzone.on("success", function(file, response) {
+    myDropzone.on("success", function (file, response) {
         var fileUrl = response.url;
         $("#appbundle_add_contribution_mediaUrl").val(fileUrl);
-        file.previewElement.addEventListener("click", function() {
+        file.previewElement.addEventListener("click", function () {
             myDropzone.removeFile(file);
             $("#appbundle_add_contribution_mediaUrl").val('');
         });
+    });
+
+    myDropzone.on("error", function (file) {
+        myDropzone.removeFile(file);
     });
 });
