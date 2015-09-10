@@ -58,3 +58,28 @@ body.home {
 a.btn-home {
     display: block;
 }
+}
+
+.gm-style img,
+.img-infowindow {
+    width: 100%;
+}
+
+.iw-panel {
+    width: 255px;
+    position: relative;
+}
+.iw-img img {
+    margin: 0 auto;
+}
+
+.iw-content {
+    background-color: #0088CC;
+    color: white;
+    padding: 2px 4px;
+}
+
+.iw-content a {
+    color: white;
+    text-decoration: underline;
+}

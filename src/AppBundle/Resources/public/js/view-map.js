@@ -45,25 +45,30 @@ function createMarker(map, clusters, infowindow, contribution) {
     var imagePartners = '/bundles/app/img/marker-partners.png';
     var imageCustomers = '/bundles/app/img/marker-customers.png';
 
+    var title = 'Community';
+
     var image = imageCommunity;
     if (contribution.userType === 'partner') {
         image = imagePartners;
+        title = 'Partner';
     }
     if (contribution.userType === 'customer') {
         image = imageCustomers;
+        title = 'Customer';
     }
 
     var marker = new google.maps.Marker({
         map: map,
         position: contribution.position,
-        title: contribution.userType,
+        title: title,
         icon: image
     });
 
     var contentTemplate = _.template(info_window_template);
     var contentString = contentTemplate({
         content: Autolinker.link(contribution.content),
-        mediaUrl: contribution.media
+        mediaUrl: contribution.media,
+        title: title
     });
 
     marker.addListener('click', function () {
