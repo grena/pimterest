@@ -41,7 +41,6 @@ function initClusters(map) {
 }
 
 function createMarker(map, clusters, infowindow, contribution) {
-    CB_Init();
     var imageCommunity = '/bundles/app/img/marker-collaborators.png';
     var imagePartners = '/bundles/app/img/marker-partners.png';
     var imageCustomers = '/bundles/app/img/marker-customers.png';
@@ -85,6 +84,8 @@ $(document).ready(function (e) {
     var map = initMap();
     var clusters = initClusters(map);
 
+    CB_Init();
+
     var infowindow = new google.maps.InfoWindow({
         content: ''
     });
@@ -109,6 +110,9 @@ $(document).ready(function (e) {
         if (infowindow) {
             infowindow.close();
         }
+        if ($('#cortex')) {
+            $('#cortex').remove();
+        }
     });
     map.addListener('zoom_changed', function() {
         if (infowindow) {
@@ -120,5 +124,21 @@ $(document).ready(function (e) {
         response.forEach(function (coordinates) {
             createMarker(map, clusters, infowindow, coordinates);
         })
+    });
+
+    var k = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65],
+        n = 0;
+    $(document).keydown(function (e) {
+        if (e.keyCode === k[n++]) {
+            if (n === k.length) {
+                var video = '<iframe id="cortex" width="420" height="315" src="https://www.youtube.com/embed/mYvAYwpUDv8?autoplay=1" frameborder="0" style="position: absolute; bottom: 0; right: 0;"></iframe>';
+                $('body').append(video);
+                n = 0;
+                return false;
+            }
+        }
+        else {
+            n = 0;
+        }
     });
 });
