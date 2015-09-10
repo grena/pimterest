@@ -32,3 +32,29 @@ body.map {
     padding-top: 5px;
     margin-right: 15px;
 }
+
+body.home {
+    background-image: url('/bundles/app/img/background.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.white {
+    padding: 25px;
+    color: #ffffff;
+    margin-top: 140px;
+}
+
+.white h1 {
+    font-size: 75px;
+    margin-bottom: 35px;
+    font-family: 'Amatic SC', cursive;
+    border: 1px solid rgba(255, 255, 255, 0.44);
+    padding: 25px 0;
+}
+
+a.btn-home {
+    display: block;
+}
