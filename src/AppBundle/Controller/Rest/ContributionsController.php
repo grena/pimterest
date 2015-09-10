@@ -16,22 +16,27 @@ class ContributionsController extends Controller
 {
     public function listAction(Request $request)
     {
-        $contributations = $this->getRepository()->findBy([], ['id' => 'DESC']);
+        $page = $request->query->getInt('page', 1);
+        $limit = 10;
 
-        $contributations = array_map(function($contrib) {
+        $contributions = $this->getRepository()->findBy([
+            'userType' => 'community'
+        ], ['id' => 'DESC'], $limit, (($page - 1) * $limit));
+
+        $contributions = array_map(function($contrib) {
             $data = $contrib->toArray();
             $data['authorlink'] = $this->getAuthorLink($contrib->getUsername(), $contrib->getSource());
 
             return $data;
-        }, $contributations);
+        }, $contributions);
 
-        return new JsonResponse($contributations);
+        return new JsonResponse($contributions);
     }
 
     protected function getAuthorLink($username, $source)
     {
         $urls = [
-            'twitter' => 'https://twitter.com/%s',
+            'twitter'   => 'https://twitter.com/%s',
             'instagram' => 'https://instagram.com/%s',
             'community' => 'http://www.akeneo.com/'
         ];

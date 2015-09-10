@@ -125,10 +125,10 @@ a.btn-home {
     font-size: 13px;
     padding: 0 10px;
 }
-#wall .item .sourcebox img {
+#wall .item .sourceimage{
     width:20px;
     float: right;
-    margin: 10px;
+    margin-right: 10px;
 }
 #wall .item .authorlink {
     color: #A349A4;
