@@ -58,7 +58,6 @@ body.home {
 a.btn-home {
     display: block;
 }
-}
 
 .gm-style img,
 .img-infowindow {
@@ -66,18 +65,16 @@ a.btn-home {
 }
 
 .iw-panel {
-    max-width: 400px;
     position: relative;
 }
 .iw-img img {
     margin: 0 auto;
-    max-height: 400px;
     width: 100%;
     height: auto;
 }
 
 .iw-content {
-    padding: 2px 4px;
+    padding: 4px 8px;
     text-align: justify;
 }
 
@@ -92,15 +89,14 @@ a.btn-home {
 }
 
 .myInfobox {
-    border: solid 1px black;
-    background-color:whitesmoke;
-    width: 300px;
+    background-color:white;
+    width: 500px;
     color: #000;
-    font-size: 10px;
+    font-size: 14px;
     padding: 0;
     border-radius: 2px;
     margin-left: -30px;
-    margin-top: -6px
+    margin-top: 0;
 }
 #wall {
     margin: 0 auto;
