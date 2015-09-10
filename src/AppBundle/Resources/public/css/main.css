@@ -7,6 +7,7 @@
 
 html, body {
     height: 100%;
+    font-family: 'Dosis', sans-serif;
 }
 
 body.map {
@@ -83,6 +84,8 @@ a.btn-home {
 
 .iw-content {
     padding: 4px 8px;
+    font-family: 'Dosis', sans-serif;
+    font-size: 14px;
 }
 
 .partner.iw-panel {
@@ -165,6 +168,7 @@ a.btn-home {
 }
 #wall {
     margin: 0 auto;
+    font-size: 14px;
 }
 #wall .item {
     float:left;
@@ -176,10 +180,9 @@ a.btn-home {
 }
 #wall .item .txtbox {
     padding: 10px;
-    font-size: 12px;
 }
 #wall .item .authorbox {
-    font-size: 13px;
+    font-size: 14px;
     padding: 0 10px;
 }
 #wall .item .sourceimage{
