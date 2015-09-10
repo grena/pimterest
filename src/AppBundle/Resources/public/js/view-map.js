@@ -41,6 +41,7 @@ function initClusters(map) {
 }
 
 function createMarker(map, clusters, infowindow, contribution) {
+    CB_Init();
     var imageCommunity = '/bundles/app/img/marker-collaborators.png';
     var imagePartners = '/bundles/app/img/marker-partners.png';
     var imageCustomers = '/bundles/app/img/marker-customers.png';

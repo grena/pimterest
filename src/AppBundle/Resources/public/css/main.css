@@ -69,11 +69,16 @@ a.btn-home {
     max-width: 200px;
 }
 
+.community .iw-img {
+    max-height: 400px;
+    overflow: hidden;
+}
+
 .community .iw-img img {
     width: 100%;
     max-width: none;
     height: auto;
-    max-height: none;
+    overflow: hidden;
 }
 
 .iw-content {
@@ -95,7 +100,7 @@ a.btn-home {
     background-color:white;
     width: 500px;
     color: #000;
-    font-size: 14px;
+    font-size: 13px;
     padding: 0;
     border-radius: 2px;
     margin-left: -30px;
