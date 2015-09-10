@@ -6,9 +6,17 @@ map_index:
     path: /map
     defaults: { _controller: AppBundle:Map:index }
 
+gallery_index:
+    path: /gallery
+    defaults: { _controller: AppBundle:Gallery:index }
+
 locations_index:
     path: /rest/locations
     defaults: { _controller: AppBundle:Rest/Locations:list, _format: json }
+
+contributions_index:
+    path: /rest/contributions
+    defaults: { _controller: AppBundle:Rest/Contributions:list, _format: json }
 
 admin_index:
     path: /admin

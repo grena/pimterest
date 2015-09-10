@@ -102,3 +102,45 @@ a.btn-home {
     margin-left: -30px;
     margin-top: -6px
 }
+#wall {
+    margin: 0 auto;
+}
+#wall .item {
+    float:left;
+    width: 360px;
+    margin: 10px;
+    box-sizing: border-box;
+    background: #FFFFFF;
+    overflow: hidden;
+}
+#wall .item .txtbox {
+    padding: 10px;
+    font-size: 12px;
+}
+#wall .item .authorbox {
+    font-size: 13px;
+    padding: 0 10px;
+}
+#wall .item .sourcebox img {
+    width:20px;
+    float: right;
+    margin: 10px;
+}
+#wall .item .authorlink {
+    color: #A349A4;
+}
+#wall .item img {
+    width: 100%;
+}
+#wall .twitter {
+    border-bottom: 4px solid #55acee;
+}
+#wall .instagram {
+    border-bottom: 4px solid #3f729b;
+}
+#wall .community {
+    border-bottom: 4px solid #9452BA;
+}
+body.gallery {
+    background: #f1f4f9;
+}

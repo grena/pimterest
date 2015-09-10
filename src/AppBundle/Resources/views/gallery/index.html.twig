@@ -1,0 +1,43 @@
+{% extends '@App/base.html.twig' %}
+
+{% block container %}
+    <div id="wall">
+    </div>
+{% endblock %}
+
+{% block inline_javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('bundles/app/js/Autolinker.min.js') }}"></script>
+    <script>
+        $container = $('#wall');
+        function onError(element) {
+            $(element).parent().remove();
+        }
+
+        $.get('rest/contributions').then(function(contributions) {
+            _.forEach(contributions, function(contrib) {
+                var div =
+                        '<div class="item '+contrib.source+'">'+
+                            '<img onerror="onError(this)" src="'+contrib.mediaurl+'" />' +
+                            '<p class="txtbox">'+Autolinker.link(contrib.content)+'</p>' +
+                            '<p class="sourcebox"><img src="{{ asset('bundles/app/img/') }}'+contrib.source+'.png" /></p>' +
+                            '<p class="authorbox"><a href="'+contrib.authorlink+'" class="authorlink">'+(contrib.username ? contrib.username : '')+'</a></p>' +
+                        '</div>';
+
+                $('#wall').append(div);
+            });
+
+            $container.imagesLoaded(function(){
+                $container.masonry({
+                    itemSelector : '.item',
+                    columnWidth : 380,
+                    isFitWidth: true
+                });
+            });
+        })
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.2/masonry.pkgd.min.js"></script>
+    <script src="http://imagesloaded.desandro.com/imagesloaded.pkgd.min.js"></script>
+{% endblock %}
+
+{% block inline_bodyclass %}gallery{% endblock %}

@@ -58,6 +58,24 @@ class Contribution
     }
 
     /**
+     * @return array
+     */
+    public function toArray()
+    {
+        return [
+            'source' => $this->getSource(),
+            'app_id' => $this->getAppId(),
+            'username' => $this->getUsername(),
+            'usertype' => $this->getUserType(),
+            'mediaurl' => $this->getMediaUrl(),
+            'active' => $this->isActive(),
+            'content' => $this->getContent(),
+            'latitude' => $this->getLatitude(),
+            'longitude' => $this->getLongitude()
+        ];
+    }
+
+    /**
      * Get id
      *
      * @return integer 
