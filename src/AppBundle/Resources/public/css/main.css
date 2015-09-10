@@ -109,6 +109,7 @@ a.btn-home {
     margin-top: 5px;
     display: inline-block;
     background: #d36050;
+    width: 100%;
 }
 
 .customer.iw-panel {
@@ -135,6 +136,7 @@ a.btn-home {
     margin-top: 5px;
     display: inline-block;
     background: #5992c7;
+    width: 100%;
 }
 
 .community .iw-content {
