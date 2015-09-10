@@ -102,7 +102,7 @@ a.btn-home {
 
 .partner .iw-content {
     width: 335px;
-    margin-left: 150px;
+    margin-left: 155px;
     padding: 0 0 0 5px;
 }
 .partner .iw-usertype {
@@ -111,9 +111,39 @@ a.btn-home {
     background: #d36050;
 }
 
+.customer.iw-panel {
+    padding: 5px;
+    border-bottom: 4px solid #5992c7;
+}
+.customer .iw-img {
+    float: left;
+    margin: 0;
+    width: 150px;
+}
+.customer .iw-img img {
+    margin: 0 auto;
+    min-width: 150px;
+    max-width: 100%;
+}
+
+.customer .iw-content {
+    width: 335px;
+    margin-left: 155px;
+    padding: 0 0 0 5px;
+}
+.customer .iw-usertype {
+    margin-top: 5px;
+    display: inline-block;
+    background: #5992c7;
+}
+
 .community .iw-content {
     background-color: #0088CC;
     color: white;
+}
+
+.community .iw-usertype {
+    display: none;
 }
 
 .community .iw-content a {

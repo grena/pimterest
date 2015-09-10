@@ -1,5 +1,5 @@
 var info_window_template = '<div class="iw-panel <%= iwClass %>">' +
-    '<div class="iw-img text-right">' +
+    '<div class="iw-img text-center">' +
     '<a href="<%= mediaUrl %>" onclick=\'CB_Open("href=<%= mediaUrl %>");return false\' rel="clearbox">' +
     '<img src="<%= mediaUrl %>" class="img-responsive img-infowindow"/>' +
     '</a>' +
