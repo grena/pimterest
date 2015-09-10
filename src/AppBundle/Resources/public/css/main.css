@@ -208,3 +208,6 @@ a.btn-home {
 body.gallery {
     background: #f1f4f9;
 }
+.navbar-inverse {
+    background-color: #11324d;
+}
