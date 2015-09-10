@@ -66,11 +66,13 @@ a.btn-home {
 }
 
 .iw-panel {
-    width: 255px;
+    max-width: 400px;
     position: relative;
 }
 .iw-img img {
     margin: 0 auto;
+    width: 100%;
+    max-height: 400px;
 }
 
 .iw-content {
