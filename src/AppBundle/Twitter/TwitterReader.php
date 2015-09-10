@@ -76,6 +76,8 @@ class TwitterReader
             $formatted['longitude'] = $coordinates[0][0][0];
         }
 
+        dump($formatted);
+
         if ($formatted['latitude']) {
             return $formatted;
         } else {

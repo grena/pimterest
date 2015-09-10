@@ -40,7 +40,7 @@ function initClusters(map) {
     }
 }
 
-function createMarker(map, clusters, contribution) {
+function createMarker(map, clusters, infowindow, contribution) {
     var imageCommunity = '/bundles/app/img/marker-collaborators.png';
     var imagePartners = '/bundles/app/img/marker-partners.png';
     var imageCustomers = '/bundles/app/img/marker-customers.png';
@@ -66,11 +66,8 @@ function createMarker(map, clusters, contribution) {
         mediaUrl: contribution.media
     });
 
-    var infowindow = new google.maps.InfoWindow({
-        content: contentString
-    });
-
     marker.addListener('click', function () {
+        infowindow.setContent(contentString);
         infowindow.open(map, marker);
     });
     clusters.community.addMarker(marker);
@@ -80,9 +77,13 @@ $(document).ready(function (e) {
     var map = initMap();
     var clusters = initClusters(map);
 
+    var infowindow = new google.maps.InfoWindow({
+        content: ''
+    });
+
     var locations = $.get('/rest/locations').done(function (response) {
         response.forEach(function (coordinates) {
-            createMarker(map, clusters, coordinates);
+            createMarker(map, clusters, infowindow, coordinates);
         })
     });
 });
