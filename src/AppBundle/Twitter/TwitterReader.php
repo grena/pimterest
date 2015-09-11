@@ -42,9 +42,12 @@ class TwitterReader
         $data = json_decode($response);
 
         $formatted = [];
-dump($data->statuses);
+
         foreach ($data->statuses as $postData) {
-            $formatted[] = $this->extractPost($postData);
+            $parsed = $this->extractPost($postData);
+            if (count($parsed) > 0) {
+                $formatted[] = $parsed;
+            }
         }
 
         return $formatted;
@@ -60,6 +63,8 @@ dump($data->statuses);
             'active'    => true,
             'content'   => $data->text,
             'mediaurl' => null,
+            'latitude' => 0,
+            'longitude' => 0,
         ];
 
         if (isset($data->entities->media) && count((array) $data->entities->media)) {
@@ -76,12 +81,6 @@ dump($data->statuses);
             $formatted['longitude'] = $coordinates[0][0][0];
         }
 
-        dump($formatted);
-
-        if ($formatted['latitude']) {
-            return $formatted;
-        } else {
-            return [];
-        }
+        return $formatted;
     }
 }

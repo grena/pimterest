@@ -35,7 +35,7 @@ class TwitterCommand extends ContainerAwareCommand
 
             if (!$this->getContributionRepository()->findOneBy($search)) {
                 $this->getEntityManager()->persist($contribution);
-                $this->getEntityManager()->flush($contribution);
+                $this->getEntityManager()->flush();
             }
         }
 

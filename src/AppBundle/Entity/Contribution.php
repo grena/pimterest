@@ -45,6 +45,7 @@ class Contribution
     public function __construct(array $data)
     {
         if (!empty($data)) {
+            dump($data);
             $this->source    = $data['source'];
             $this->appId     = $data['app_id'];
             $this->username  = $data['username'];
