@@ -36,6 +36,15 @@
                 <li class="{{ ('gallery_index' == currentRoute) ? 'active' : '' }}"><a href="{{ url('gallery_index') }}">Gallery</a></li>
                 <li class="{{ ('map_index' == currentRoute) ? 'active' : '' }}"><a href="{{ url('map_index') }}">Map</a></li>
             </ul>
+            {% if  'map_index' == currentRoute %}
+            <div id="legend" class="pull-right" style="color: white; padding-top: 10px;">
+                    <img src="{{ asset('bundles/app/img/marker-customers.png') }}"/>&nbsp;Customers
+                &nbsp;
+                    <img src="{{ asset('bundles/app/img/marker-partners.png') }}"/>&nbsp;Partners
+                &nbsp;
+                    <img src="{{ asset('bundles/app/img/marker-collaborators.png') }}"/>&nbsp;Community
+            </div>
+            {% endif %}
         </div>
     </div>
 </nav>
